@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">      
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">     
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" media="screen and (max-width: 640px)" href="mobile.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="scripts.js"></script>
+        <title>gradient-mkr//svg</title>
+    </head>
+    <body>
+        <div id="main">
+            <div class="header">
+                <h2>gradient-mkr//svg</h2>            
+            </div>
+            <div id="background">
+                <svg viewBox="0 0 150 150"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" >
+                    <defs>
+                        <linearGradient id="gradient" gradientTransform="rotate(100 .5 .5)">
+                            <animateTransform attributeName="gradientTransform" 
+                                                id="spin"
+                                                attributeType="XML"
+                                                type="rotate"
+                                                from="100 .5 .5"
+                                                to="460 .5 .5"
+                                                dur=".01s"
+                                                repeatCount="indefinite" />
+                            <stop id="stop1" offset="0" stop-color="rgba(200, 100, 100, 0.5)"/>
+                            <stop id="stop2" offset=".3" stop-color="rgba(100, 200, 100, 0.5)">
+                                <animate id="breath" attributeName="offset" dur=".01s" values="0.40; 0.50; 0.40" repeatCount="indefinite"></animate>
+                            </stop>
+                            <stop id="stop3" offset="1" stop-color="rgba(100, 100, 200, 0.5)"/>     
+                        </linearGradient> 
+                    </defs>
+                    <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient)"/>
+                </svg>
+                <canvas id="canvas" width="4000" height="4000"></rect>         
+            </div>
+
+            <div class="content">
+
+                <div class="slide_container">
+                    <div class="row">
+                        <div class="column">
+                            <p class="tab label">Stop 1:</p>
+                            <span class="label">R:</span> 
+                            <input class="slider" name="red" type="range" min="0" max="255" value="200" oninput="colorSlider(this, '0', 'stop1')"/></br>
+                            <span class="label">G:</span> 
+                            <input class="slider" name="green" type="range" min="0" max="255" value="200" oninput="colorSlider(this, '1', 'stop1')"/></br>
+                            <span class="label">B:</span> 
+                            <input class="slider" name="blue" type="range" min="0" max="255" value="200" oninput="colorSlider(this, '2', 'stop1')"/></br>
+                            <span class="label">A:</span>
+                            <input class="slider" name="gen" type="range" min="0" max="100" value="50" oninput="colorSlider(this, '3', 'stop1')"/></br>
+                        </div>
+                        <div class="column">
+                            <p class="tab label">Stop 2:</p>
+                            <span class="label">R:</span> 
+                            <input class="slider" name="red" type="range" min="0" max="255" value="200" oninput="colorSlider(this, '0', 'stop2')"/></br>
+                            <span class="label">G:</span> 
+                            <input class="slider" name="green" type="range" min="0" max="255" value="200" oninput="colorSlider(this, '1', 'stop2')"/></br>
+                            <span class="label">B:</span> 
+                            <input class="slider" name="blue" type="range" min="0" max="255" value="200" oninput="colorSlider(this, '2', 'stop2')"/></br>
+                            <span class="label">A:</span>
+                            <input class="slider" name="gen" type="range" min="0" max="100" value="50" oninput="colorSlider(this, '3', 'stop2')"/></br>
+                        </div>
+                        <div class="column">
+                            <p class="tab label">Stop 3:</p>
+                            <span class="label">R:</span> 
+                            <input class="slider" name="red" type="range" min="0" max="255" value="200" oninput="colorSlider(this, '0', 'stop3')"/></br>
+                            <span class="label">G:</span> 
+                            <input class="slider" name="green" type="range" min="0" max="255" value="200" oninput="colorSlider(this, '1', 'stop3')"/></br>
+                            <span class="label">B:</span> 
+                            <input class="slider" name="blue" type="range" min="0" max="255" value="200" oninput="colorSlider(this, '2', 'stop3')"/></br>
+                            <span class="label">A:</span>
+                            <input class="slider" name="gen" type="range" min="0" max="100" value="50" oninput="colorSlider(this, '3', 'stop3')"/></br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="anim_container">
+                    <div class="row">
+                        <div class="thincol ani">
+                            rotation:
+                        </div>
+                        <div class="widecol ani">
+                            <input class="slider mob" id="rotation" name="gen" type="range" min="0" max="360" value="100" oninput="rotateSlider(this, 'rotate', 'gradient')"/><br>
+                        </div>
+                        <div class="thincol ani">
+                            spin:
+                        </div>
+                        <div class="widecol ani">
+                            <input class="slider" id="spinr" name="gen" type="range" min="0" max="2600" value="600" oninput="spinSlider(this, 'spin')" disabled/><br>
+                        </div>
+                        <div class="thincol ani">
+                            animate:
+                        </div>
+                        <div class="thincol ani">
+                            <label class="switch">
+                                <input class="switch-input" type="checkbox" onclick="toggleSpin()"/>
+                                <span class="switch-label" data-on="On" data-off="Off"></span> 
+                                <span class="switch-handle"></span> 
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="thincol ani">
+                            offset:
+                        </div>
+                        <div class="widecol ani">
+                            <input class="slider mob" id="offset" name="gen" type="range" min="10" max="90" value="56" oninput="offsetSlider(this, 'offset', 'stop2')"/>
+                        </div>
+                        <div class="thincol ani">
+                            breath:
+                        </div>
+                        <div class="widecol ani">
+                            <input class="slider" id="breathr" name="gen" type="range" min="0" max="1300" value="300" oninput="breathSlider(this, 'breath')" disabled/>
+                        </div>
+                        <div class="thincol ani">
+                            animate:
+                        </div>
+                        <div class="thincol ani">
+                            <label class="switch">
+                                <input class="switch-input" type="checkbox" onclick="toggleBreath()"/>
+                                <span class="switch-label" data-on="On" data-off="Off"></span> 
+                                <span class="switch-handle"></span> 
+                            </label>
+                        </div>
+                    </div> 
+                    <div class="centered">
+                        <input id="random" type="button" value="randomize" onclick="randomAll()" />
+                        <input id="code" type="button" value="show code" />
+                        <input id="save" class="ani" type="button" value="save file" />
+                    </div>
+                </div>               
+                <div class="codebox">
+                    &lt;svg viewBox="0 0 150 150"<br>
+                        <p class="tab">xmlns="http://www.w3.org/2000/svg"</p>
+                        <p class="tab">xmlns:xlink="http://www.w3.org/1999/xlink"&gt;</p>
+                        <p class="tab">&lt;defs><br></p>
+                            <p class="dub">&lt;linearGradient id="gradient" gradientTransform="rotate(<span class="rotation">100</span> .5 .5)"&gt;</p>
+                                <p class="trip"><span class="rota">&lt;animateTransform attributeName="gradientTransform"</span></p>
+                                        <p class="lots"><span class="rota">attributeType="XML"</span></p>
+                                        <p class="lots"><span class="rota">type="rotate"</span></p>
+                                        <p class="lots"><span class="rota">from="<span class="from">100</span> .5 .5"</span></p>
+                                        <p class="lots"><span class="rota">to="<span class="to">460</span> .5 .5"</span></p>
+                                        <p class="lots"><span class="rota">dur="<span class="spindur">230s</span>"</span></p>
+                                        <p class="lots"><span class="rota">repeatCount="indefinite"/&gt;</span></p>
+                                <p class="trip">&lt;stop id="stop1" offset="0" stop-color="<span class="stop1">rgb(200, 100, 100, 0.5)</span>"/&gt;</p>
+                                <p class="trip">&lt;stop id="stop2" offset="<span class="stop2offset">.3</span>" stop-color="<span class="stop2">rgb(100, 200, 100, 0.5)</span>"<span class="endstop">/&gt;</span></p>
+                                    <p class="quad"><span class="breath">&lt;animate attributeName="offset" dur="<span class="breathdur">60s</span>" values="<span class="breathrange">0.30; 0.60; 0.30</span>"</span></p>
+                                        <p class="indent"><span class="breath">repeatCount="indefinite"/&gt;</span></p>
+                                <p class="trip"><span class="breath">&lt;/stop&gt;</span></p>
+                                <p class="trip">&lt;stop id="stop3" offset="1" stop-color="<span class="stop3">rgb(100, 100, 200, 0.5)</span>"/&gt;</p>
+                            <p class="dub">&lt;/linearGradient&gt;</p>
+                        <p class="tab">&lt;/defs&gt;</p><br>
+                    <p class="tab">&lt;rect x="0" y="0" width="100%" height="100%" fill="url(#gradient)"/&gt;</p>
+                    &lt;/svg&gt;
+                </div>            
+            </div>
+        </div>
+        <script>
+            open();
+
+            $( "#code" ).click(function() {
+                $ (".codebox" ).slideToggle("slow");
+            });
+
+            let btn = document.querySelector("#save");
+            let svg = document.querySelector('svg');
+            let canvas = document.querySelector("#canvas")
+            function triggerDownload (imgURI) {
+
+            let evt = new MouseEvent('click', {
+                view: window,
+                bubbles: false,
+                cancelable: true
+            });
+
+            let a = document.createElement('a');
+            a.setAttribute('download', 'myGradient.png');
+            a.setAttribute('href', imgURI);
+            a.setAttribute('target', '_blank');
+
+            a.dispatchEvent(evt);
+            }
+
+            btn.addEventListener('click', function () {
+            let canvas = document.getElementById('canvas');
+            let ctx = canvas.getContext('2d');
+            let data = (new XMLSerializer()).serializeToString(svg);
+            let DOMURL = window.URL || window.webkitURL || window;
+
+            let img = new Image();
+            let svgBlob = new Blob([data], {type: 'image/svg+xml;charset=utf-8'});
+            let url = DOMURL.createObjectURL(svgBlob);
+
+            img.onload = function () {
+                ctx.drawImage(img, 0, 0);
+                DOMURL.revokeObjectURL(url);
+
+                let imgURI = canvas
+                    .toDataURL('image/png')
+                    .replace('image/png', 'image/octet-stream');
+
+                triggerDownload(imgURI);
+            };
+
+            img.src = url;
+            });
+
+        </script>
+    </body>
+</html> 
