@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">      
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">     
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" media="screen and (max-width: 640px)" href="mobile.css">
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" media="screen and (max-width: 640px)" href="./css/mobile.css">
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-        <script src="scripts.js"></script>
+        <link rel="shortcut icon" href="favicon.ico">
         <title>gradient-mkr//svg</title>
     </head>
     <body>
@@ -162,56 +162,7 @@
                 </div>            
             </div>
         </div>
-        <script>
-            open();
-
-            $( "#code" ).click(function() {
-                $ (".codebox" ).slideToggle("slow");
-            });
-
-            let btn = document.querySelector("#save");
-            let svg = document.querySelector('svg');
-            let canvas = document.querySelector("#canvas")
-            function triggerDownload (imgURI) {
-
-            let evt = new MouseEvent('click', {
-                view: window,
-                bubbles: false,
-                cancelable: true
-            });
-
-            let a = document.createElement('a');
-            a.setAttribute('download', 'myGradient.png');
-            a.setAttribute('href', imgURI);
-            a.setAttribute('target', '_blank');
-
-            a.dispatchEvent(evt);
-            }
-
-            btn.addEventListener('click', function () {
-            let canvas = document.getElementById('canvas');
-            let ctx = canvas.getContext('2d');
-            let data = (new XMLSerializer()).serializeToString(svg);
-            let DOMURL = window.URL || window.webkitURL || window;
-
-            let img = new Image();
-            let svgBlob = new Blob([data], {type: 'image/svg+xml;charset=utf-8'});
-            let url = DOMURL.createObjectURL(svgBlob);
-
-            img.onload = function () {
-                ctx.drawImage(img, 0, 0);
-                DOMURL.revokeObjectURL(url);
-
-                let imgURI = canvas
-                    .toDataURL('image/png')
-                    .replace('image/png', 'image/octet-stream');
-
-                triggerDownload(imgURI);
-            };
-
-            img.src = url;
-            });
-
-        </script>
+        <script src="./js/main.js"></script>
+        <script src="./js/export.js"></script>
     </body>
 </html> 
